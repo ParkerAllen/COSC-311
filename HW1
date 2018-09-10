@@ -1,0 +1,28 @@
+package cocs311hw1;
+/*
+Parker Allen
+COCS 311 HW1 9/11
+https://github.com/ParkerAllen/COSC-311.git
+ */
+ 
+public class COCS311HW1 {
+    
+    public static void printArray(int[] arr) {
+        for(int i = 0; i < arr.length; i++)
+            System.out.print(arr[i]);
+        System.out.println();
+    }
+    
+    public static int[] repeat(int[] arr,int repeat){
+        int[] rtn = new int[arr.length * repeat];
+        for(int i = 0; i < rtn.length; i++)
+            rtn[i]=arr[i % arr.length];
+        return rtn;
+    }
+    
+    public static void main(String[] args) {
+        int[] array = new int[]{1, 2, 3};
+        printArray(array);
+        printArray(repeat(array,3));
+    }    
+}
