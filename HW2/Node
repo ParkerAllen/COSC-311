@@ -1,0 +1,17 @@
+package cocs311hw2;
+
+public class Node {
+    
+    double info;
+    public Node link;
+
+    public Node(){
+        info = 0;
+        link = null;
+    }
+    
+    public Node(double i, Node l){
+        info = i;
+        link = l;
+    }
+}
