@@ -1,0 +1,40 @@
+package cocs311hw2;
+
+public class LinkedList {
+    
+    public Node head;
+    
+    public LinkedList(double[] d){
+        head = null;
+        insert(d);
+    }
+    public void insert(double[] d){
+        for(int i = d.length - 1; -1 < i; i--){
+            Node n = new Node(d[i], head);
+            head = n;
+        }
+    }
+    
+    public void display(){
+        Node curr = head, prev = null;
+        while(curr != null){
+            System.out.print(curr.info + " ");
+            curr = curr.link;
+        }
+        System.out.println();
+    }
+    
+    public void delete(double d){
+        Node curr = head.link, prev = head;
+        if(head == null)
+            return;        
+        for(; curr != null; curr = curr.link){
+            if(curr.info > d)
+                prev.link = curr.link;
+            else
+                prev = prev.link;
+        }
+        if(head.info > d)
+                head = head.link;
+    }
+}
