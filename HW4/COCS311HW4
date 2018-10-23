@@ -1,0 +1,28 @@
+package cocs311hw4;
+
+import java.util.Random;
+/*
+Parker Allen
+COCS 311 HW4 10/23
+https://github.com/ParkerAllen/COSC-311.git
+*/
+public class COCS311HW4 {
+    
+    public static CircularQueue q;
+
+    public static void createQueue(int x){        
+        Random num = new Random();
+        int arr[] = new int[x];        
+        q = new CircularQueue(arr);
+        for(int i = num.nextInt(5) + 1; 0 < i; i--)
+            q.insert(num.nextInt(100));
+        for(int i = num.nextInt(5) + 1; 0 < i; i--)
+            q.delete();
+        q.printQueue();
+    }
+    
+    public static void main(String[] args) {
+        for(int i = 0; i < 3; i++)
+            createQueue(10);
+    }
+}
