@@ -1,0 +1,49 @@
+package cocs311hw6;
+import java.util.Random;
+/*
+Parker Allen
+COCS 311 HW6 11/15
+https://github.com/ParkerAllen/COSC-311.git
+*/
+public class COCS311HW6 {
+    
+    public static Random gen = new Random(97);
+    public static int [] hashArr;
+    
+    public static int[] fillInput(){
+        int[] temp = new int[41];
+        int[] inputArray = new int[20];
+        int max = temp.length;
+        for(int i = 0; i < max; i++)
+            temp[i] = i + 10;
+        for(int i = 0; i < inputArray.length; i++){
+            int r = gen.nextInt(max);
+            inputArray[i] = temp[r];
+            temp[r] = temp[max - 1];
+            max--;
+        }
+        return inputArray;
+    }
+    
+    public static int[] hash(int[] inArr, int[] hashArr){        
+        int count = 0;
+        for (int i = 0; i < inArr.length; i++) {
+            int key = inArr[i];
+            int index = key % hashArr.length;
+            while(hashArr[index] != 0)
+                    index = (index + 1) % hashArr.length;
+            hashArr[index] = key;
+            count++;
+            if (count / hashArr.length >= .75) {
+                hashArr = hash(hashArr, new int[hashArr.length * 2]);
+            }
+        }
+        return hashArr;
+    }
+    
+    public static void main(String[] args) {
+        int[] rtn = hash(fillInput(), hashArr = new int[8]);
+        for(int i = 0; i < rtn.length; i++)
+            System.out.print(rtn[i] + " ");
+    }    
+}
